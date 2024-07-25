@@ -1,28 +1,24 @@
-# ProjetoDIOlogica
-Projeto de Lógica de Programação, o Professor pediu em JAVA porém fiz em PYTHON espero que não tenha problema
- # 2️⃣ Calculadora de partidas Rankeadas
-**O Que deve ser utilizado**
+# Definição da Função colocando dois argumentos, que representam o número de vitórias e derrotas de um jogador
+def calcular_saldo_e_nivel(vitorias, derrotas):
+    # Calculo do Saldo subtraindo as derrotas das vitórias
+    saldo = vitorias - derrotas
+    # Definição dos Níveis usando um dicionário, as chaves são os limites, e os valores são os nomes dos Níveis
+    niveis = {10: 'Ferro', 20: 'Bronze', 50: 'Prata', 80: 'Ouro', 90: 'Diamante', 100: 'Lendário'}
+    # Inicial o Nível
+    nivel = 'Imortal'
+    # Determinação do nível usando o a estrutura de repetição FOR, itera sobre os itens do dicionário usando o método ITEMS em ordem decrescente devido ao reverse=True
+    for limite, nome in sorted(niveis.items(), reverse=True):
+        # Usando a estrutura de controle IF para verificar se as vitórias são menores ou iguais ao limite
+        if vitorias <= limite:
+            # o nivel do jogador é definido como o nome do nivel correspondente
+            nivel = nome
+    # A função retorna o saldo e o nível calculados
+    return saldo, nivel
+# Entrada do usuário: Solicita ao usuário que insira o número de vitórias e derrotas. Estes são convertidos em inteiros e armazenados nas variáveis vitorias e derrotas
+vitorias = int(input('Digite a Quantidade de Vitórias do jogador: '))
+derrotas = int(input('Digite a Quantidade de Derrotas do jogador: '))
+# Chamada da função: A função calcular_saldo_e_nivel é chamada com vitorias e derrotas como argumentos, e os resultados são armazenados nas variáveis saldo e nivel.
+saldo, nivel = calcular_saldo_e_nivel(vitorias, derrotas)
+# Exibição dos resultados: Finalmente, o saldo e o nível do jogador são impressos na tela.
+print(f'O Herói tem de saldo {saldo} e está no nível {nivel}.')
 
-- Variáveis
-- Operadores
-- Laços de repetição
-- Estruturas de decisões
-- Funções
-
-## Objetivo:
-
-Crie uma função que recebe como parâmetro a quantidade de vitórias e derrotas de um jogador,
-depois disso retorne o resultado para uma variável, o saldo de Rankeadas deve ser feito através do calculo (vitórias - derrotas)
-
-Se vitórias for menor do que 10 = Ferro
-Se vitórias for entre 11 e 20 = Bronze
-Se vitórias for entre 21 e 50 = Prata
-Se vitórias for entre 51 e 80 = Ouro
-Se vitórias for entre 81 e 90 = Diamante
-Se vitórias for entre 91 e 100= Lendário
-Se vitórias for maior ou igual a 101 = Imortal
-
-## Saída
-
-Ao final deve se exibir uma mensagem:
-"O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**"
